@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>Default upload file</title>
+		<meta charset="utf-8" />
+		<link href="/css/bootstrap.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.disabled {
+				pointer-events: none;
+				cursor: not-allowed;
+				opacity: 0.65;
+				filter: alpha(opacity=65);
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+		</style>
+		<script>
+			document.addEventListener('DOMContentLoaded', function(){
+				document.getElementById('sendButton').addEventListener('click', disable);
+				function disable() {
+					document.getElementById('sendButton').disabled = true;
+					document.getElementById('sendButton').classList.add('disabled');
+					document.getElementById('uploadForm').submit()
+				}
+			})
+		</script>
+	</head>
+	<body>
+		<div style="width: 100%; margin-top: 100px;">
+			<div style="width: 600px; margin: 0 auto;">
+				<p>Upload data.</p>
+				<form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
+					<input type="file" name="file" />
+					<input type='submit' id='sendButton' value='Загрузить' />
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
